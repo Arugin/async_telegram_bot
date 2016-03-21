@@ -1,7 +1,9 @@
 require 'eventmachine'
+require 'em-http-request'
 
 module AsyncTelegram
   class Api
+    ENDPOINT = 'https://api.telegram.org/'
     ENDPOINTS = %w(
         getMe sendMessage forwardMessage sendPhoto sendAudio sendDocument
         sendSticker sendVideo sendVoice sendLocation sendChatAction
@@ -21,7 +23,7 @@ module AsyncTelegram
     ].freeze
 
     def initialize(token)
-      @conn = EventMachine::HttpRequest.new(ENV['TELEGRAM_API_ENDPOINT'])
+      @conn = EventMachine::HttpRequest.new(ENV['TELEGRAM_API_ENDPOINT'] || ENDPOINT)
       @token = token
     end
 
