@@ -21,7 +21,7 @@ module AsyncTelegram
     def on_command_exec(command, &block)
       @command_handlers[command] = Proc.new do |message, api|
         if message.text.start_with?("/#{command}")
-          block.call command, api
+          block.call message, api
         end
       end
     end
@@ -62,7 +62,7 @@ module AsyncTelegram
 
     def process_commands(message)
       command_handlers.each do |_, handler|
-        handler.call(message)
+        handler.call(message, @api)
       end
     end
 

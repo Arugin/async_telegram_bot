@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'eventmachine', '>= 1.2.0.1'
   gem.add_dependency 'virtus'
   gem.add_dependency 'oj'
-  gem.add_dependency 'active_support'
+  gem.add_dependency 'activesupport'
   gem.add_development_dependency 'bundler', '~> 1.0'
 
   gem.executables = `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f)}
